@@ -1,0 +1,178 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.validate-form {
+    max-width: 840px;
+    padding: 20px 30px;
+    margin: auto;
+}
+
+.validate-form h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.row-name div {
+    display: flex;
+    flex-direction: column;
+    width: calc(50% - 10px);
+}
+
+label {
+    color: #002f6b;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+.w-100 select,
+.w-100 input {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    color: #495057;
+    display: block;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 0;
+    max-width: 100%;
+    padding: 6px 12px;
+    width: 100%;
+    box-shadow: 0px 0px 0px -7px rgb(0 0 0 / 0%);
+    appearance: none;
+}
+
+.w-100 select:focus,
+.w-100 input:focus {
+    background-color: #fff;
+    border-color: #80bdff;
+    color: #495057;
+    outline: none;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.row-whome {
+    width: 100%;
+}
+
+.row-marital fieldset,
+.row-whome fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset {
+    border: none;
+}
+
+fieldset span {
+    font-weight: 400;
+}
+
+.btn-submit {
+    background-color: #409EFF;
+    color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 6px 12px;
+    text-align: center;
+}
+
+.item.otherstatus {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: all .3s ease .15s;
+    -moz-transition: all .3s ease .15s;
+    -o-transition: all .3s ease .15s;
+    -ms-transition: all .3s ease .15s;
+    transition: all .3s ease .15s;
+    margin-bottom: 0;
+}
+
+.item.otherstatus.active {
+    margin-top: -25px;
+    opacity: 1;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.row-marital>label::after,
+.row-phone-no label::after,
+.row-email label::after,
+.row-patient-gender label::after,
+.row-patient-age label::after {
+    content: "*";
+    color: red;
+}
+
+.error-alert {
+    display: block;
+    color: red;
+    margin: 10px 0;
+}
+
+.tbl-result {
+    max-width: 1366px;
+    margin: auto;
+}
+
+.tbl-result thead tr td {
+    background-color: #80bdff;
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#customers td,
+#customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+    background-color: #ddd;
+}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.row-date-of-disability input {
+    width: 100%;
+}

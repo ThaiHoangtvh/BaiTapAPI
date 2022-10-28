@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <section id="sec_form">
+        <div class="container">
+            <div class="validate-form">
+                <h1>Validate Form</h1>
+                <form id="form1" method="get" action="" name="formval" onsubmit="return false">
+                    <div class="item w-100 row-name">
+                        <div class="col-first-name">
+                            <label for="firstname">First Name</label>
+                            <input type="text" name="first-name" id="firstname" class="c-first-name">
+                            <!-- <span class="error-alert"></span> -->
+                        </div>
+                        <div class="col-last-name">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" class="c-last-name" name="last-name" id="lastname">
+                            <!-- <span class="error-alert"></span> -->
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="w-100 row-patient-age">
+                            <label for="patientage">Patient Age</label>
+                            <input type="number" name="patient-age" id="patientage">
+                            <!-- <span class="error-alert"></span> -->
+                        </div>
+
+                    </div>
+                    <div class="item">
+                        <div class="w-100 row-nickname">
+                            <label for="nicknameid">Prefered Name / Nickname</label>
+                            <input type="text" name="nickname" id="nicknameid">
+                            <!-- <span class="error-alert"></span> -->
+                        </div>
+
+                    </div>
+                    <div class="item">
+                        <div class="w-100 row-email">
+                            <label for="nicknameid">Email</label>
+                            <input type="text" name="email" id="emailid">
+                            <!-- <span class="error-alert"></span> -->
+                        </div>
+
+                    </div>
+                    <div class="item">
+                        <div class="w-100 row-patient-gender">
+                            <label for="patientgender">Patient Gender</label>
+                            <select name="patient-gender" id="patientgender" class="w-100">
+                                <option value="0" selected disabled>- Select -</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <!-- <span class="error-alert"></span> -->
+                        </div>
+
+                    </div>
+                    <div class="item">
+                        <div class="w-100 row-phone-no">
+                            <label for="phoneno">Phone no.</label>
+                            <input type="number" name="phone-no" id="phoneno">
+                            <!-- <span class="error-alert"></span> -->
+                        </div>
+
+                    </div>
+                    <div class="item">
+                        <div class="w-100 row-spouce-name">
+                            <label for="spoucename">Spouce Name</label>
+                            <input type="text" name="spouce-name" id="spoucename">
+                        </div>
+
+                    </div>
+                    <div class="item">
+                        <div class="w-100 row-whome">
+                            <label for="whomeid">With whome do you live?</label>
+                            <input type="text" name="whome" id="whomeid">
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="row-marital">
+                            <label for="">Marital Status</label>
+                            <fieldset id="group1">
+                                <label for="married">
+                                    <input type="radio" value="Married" id="married" name="group1" onclick="toggleSlide()">
+                                    <span>Married</span>
+                                </label>
+                                <label for="unmarried">
+                                    <input type="radio" value="Unmarried" id="unmarried" name="group1" onclick="toggleSlide()">
+                                    <span>Unmarried</span>
+                                </label>
+                                <label for="other">
+                                    <input type="radio" value="other" id="other" name="group1" onclick="toggleSlide()">
+                                    <span>other</span>
+                                </label>
+                                <!-- <span class="error-alert"></span> -->
+                            </fieldset>
+                        </div>
+
+                    </div>
+                    <div class="item otherstatus">
+                        <div class="w-100 row-otherstatus">
+                            <label for="otherstatus">Marital status(other)</label>
+                            <input type="text" name="other-status" id="otherstatus">
+                            <!-- <span class="error-alert"></span> -->
+                        </div>
+
+                    </div>
+                    <div class="item">
+                        <div class="w-100 row-occupationid">
+                            <label for="occupation">Occupation</label>
+                            <input type="text" name="occupation" id="occupationid" placeholder="If retired or disabled enter your last occupation">
+                        </div>
+
+                    </div>
+                    <div class="item">
+                        <div class="row-whome">
+                            <label for="">Retired?</label>
+                            <fieldset id="group2">
+                                <label for="retiredyes">
+                                    <input type="radio" value="Yes" id="retiredyes" name="group2">
+                                    <span>Yes</span>
+                                </label>
+                                <label for="retiredno">
+                                    <input type="radio" value="No" id="retiredno" name="group2">
+                                    <span>No</span>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="w-100 row-date-of-disability">
+                            <label for="">Date of disability</label>
+                            <input type="date" name="" id="date-time">
+                        </div>
+                    </div>
+                    <div class="submit-form">
+                        <input class="btn-submit" onclick="checkVal()" type="submit"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section>
+        <table class="tbl-result" id="customers">
+            <thead>
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Patient Age</td>
+                    <td>Prefered Name / Nickname</td>
+                    <td>Email</td>
+                    <td>Patient Gender</td>
+                    <td>Phone no.</td>
+                    <td>Spouce Name</td>
+                    <td>With whome do you live?</td>
+                    <td>Marital Status</td>
+                    <td>Occupation</td>
+                    <td>Retired?</td>
+                    <td>Date of disability</td>
+                </tr>
+            </thead>
+            <tbody id="show">
+            </tbody>
+        </table>
+    </section>
+</body>
+
+</html>
