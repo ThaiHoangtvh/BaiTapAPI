@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js"></script>
 </head>
 
 <body>
@@ -19,19 +18,19 @@
                     <div class="item w-100 row-name">
                         <div class="col-first-name">
                             <label for="firstname">First Name</label>
-                            <input type="text" name="first-name" id="firstname" class="c-first-name">
+                            <input type="text" name="first-name" id="firstname" class="c-first-name" value="Name1">
                             <!-- <span class="error-alert"></span> -->
                         </div>
                         <div class="col-last-name">
                             <label for="lastname">Last Name</label>
-                            <input type="text" class="c-last-name" name="last-name" id="lastname">
+                            <input type="text" class="c-last-name" name="last-name" id="lastname" value="Name2">
                             <!-- <span class="error-alert"></span> -->
                         </div>
                     </div>
                     <div class="item">
                         <div class="w-100 row-patient-age">
                             <label for="patientage">Patient Age</label>
-                            <input type="number" name="patient-age" id="patientage">
+                            <input type="number" name="patient-age" id="patientage" value="25">
                             <!-- <span class="error-alert"></span> -->
                         </div>
 
@@ -39,7 +38,7 @@
                     <div class="item">
                         <div class="w-100 row-nickname">
                             <label for="nicknameid">Prefered Name / Nickname</label>
-                            <input type="text" name="nickname" id="nicknameid">
+                            <input type="text" name="nickname" id="nicknameid" value="Nickname">
                             <!-- <span class="error-alert"></span> -->
                         </div>
 
@@ -47,7 +46,7 @@
                     <div class="item">
                         <div class="w-100 row-email">
                             <label for="nicknameid">Email</label>
-                            <input type="text" name="email" id="emailid">
+                            <input type="text" name="email" id="emailid" value="mail@gmail.com">
                             <!-- <span class="error-alert"></span> -->
                         </div>
 
@@ -57,7 +56,7 @@
                             <label for="patientgender">Patient Gender</label>
                             <select name="patient-gender" id="patientgender" class="w-100">
                                 <option value="0" selected disabled>- Select -</option>
-                                <option value="Male">Male</option>
+                                <option selected value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Others">Others</option>
                             </select>
@@ -68,7 +67,7 @@
                     <div class="item">
                         <div class="w-100 row-phone-no">
                             <label for="phoneno">Phone no.</label>
-                            <input type="number" name="phone-no" id="phoneno">
+                            <input type="number" name="phone-no" id="phoneno" value="0965352444">
                             <!-- <span class="error-alert"></span> -->
                         </div>
 
@@ -76,14 +75,14 @@
                     <div class="item">
                         <div class="w-100 row-spouce-name">
                             <label for="spoucename">Spouce Name</label>
-                            <input type="text" name="spouce-name" id="spoucename">
+                            <input type="text" name="spouce-name" id="spoucename" value="Spouce Name">
                         </div>
 
                     </div>
                     <div class="item">
                         <div class="w-100 row-whome">
                             <label for="whomeid">With whome do you live?</label>
-                            <input type="text" name="whome" id="whomeid">
+                            <input type="text" name="whome" id="whomeid" value="whome do you">
                         </div>
 
                     </div>
@@ -93,7 +92,7 @@
                             <label for="">Marital Status</label>
                             <fieldset id="group1">
                                 <label for="married">
-                                    <input type="radio" value="Married" id="married" name="group1" onclick="toggleSlide()">
+                                    <input checked type="radio" value="Married" id="married" name="group1" onclick="toggleSlide()">
                                     <span>Married</span>
                                 </label>
                                 <label for="unmarried">
@@ -112,7 +111,7 @@
                     <div class="item otherstatus">
                         <div class="w-100 row-otherstatus">
                             <label for="otherstatus">Marital status(other)</label>
-                            <input type="text" name="other-status" id="otherstatus">
+                            <input type="text" name="other-status" id="otherstatus" value="Marital">
                             <!-- <span class="error-alert"></span> -->
                         </div>
 
@@ -120,7 +119,7 @@
                     <div class="item">
                         <div class="w-100 row-occupationid">
                             <label for="occupation">Occupation</label>
-                            <input type="text" name="occupation" id="occupationid" placeholder="If retired or disabled enter your last occupation">
+                            <input type="text" name="occupation" id="occupationid" placeholder="If retired or disabled enter your last occupation" value="Occupation">
                         </div>
 
                     </div>
@@ -129,7 +128,7 @@
                             <label for="">Retired?</label>
                             <fieldset id="group2">
                                 <label for="retiredyes">
-                                    <input type="radio" value="Yes" id="retiredyes" name="group2">
+                                    <input checked type="radio" value="Yes" id="retiredyes" name="group2">
                                     <span>Yes</span>
                                 </label>
                                 <label for="retiredno">
@@ -142,7 +141,7 @@
                     <div class="item">
                         <div class="w-100 row-date-of-disability">
                             <label for="">Date of disability</label>
-                            <input type="date" name="" id="date-time">
+                            <input type="date" name="" id="date-time" value="2022-05-20">
                         </div>
                     </div>
                     <div class="submit-form">
@@ -153,6 +152,7 @@
         </div>
     </section>
     <section>
+        <h1 class="fill" onclick="fill()">Lọc năm sinh > 2000</h1>
         <table class="tbl-result" id="customers">
             <thead>
                 <tr>
@@ -169,6 +169,8 @@
                     <td>Occupation</td>
                     <td>Retired?</td>
                     <td>Date of disability</td>
+                    <td>Create_at</td>
+                    <td>Delete</td>
                 </tr>
             </thead>
             <tbody id="show">
@@ -176,5 +178,6 @@
         </table>
     </section>
 </body>
+<script src="js/main.js"></script>
 
 </html>

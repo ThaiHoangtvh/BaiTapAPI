@@ -176,3 +176,15 @@ fieldset span {
 .row-date-of-disability input {
     width: 100%;
 }
+
+.fill {
+    height: 40px;
+    background-color: #04AA6D;
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    line-height: 40px;
+}

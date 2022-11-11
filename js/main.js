@@ -1,5 +1,42 @@
 const getQuery = (name) => document.querySelector(name);
+const getElement = (name) => document.getElementById(name);
+const first_name = getQuery('input[name="first-name"]').value;
+const last_name = getQuery('input[name="last-name"]').value;
+// const patientage_age = getQuery('input[name="patient-age"]').value;
+const nicknames = getQuery('input[name="nickname"]').value;
+const emails = getQuery('input[name="email"]').value;
+const patientgenders = getQuery('#patientgender').value;
+const phones = getQuery('#phoneno').value;
+const spoucenames = getQuery('#spoucename').value;
+const whomeid = getQuery('#whomeid').value;
+const occupationid = getQuery('#occupationid').value;
+// let date_time = getQuery('#date-time').value;
+// const test = getElement('date-time').value;
+// console.log(test);
+// 
+let today = new Date();
+const dd = String(today.getDate()).padStart(2, '0');
+const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+const yyyy = today.getFullYear();
 
+today = dd + '/' + mm + '/' + yyyy;
+// console.log(today);
+// 
+let ticked = "";
+let ticked2 = "";
+const item_tick1 = getElement('retiredyes');
+const item_tick2 = getElement('retiredno');
+const age = getElement('patientage');
+const list_error = document.getElementsByClassName('error-alert');
+const email = getElement('emailid');
+const patientgender = getElement('patientgender');
+const otherstatus = getElement('otherstatus');
+const phoneno = getElement('phoneno');
+const group1 = getElement('group1');
+const gr1_t1 = getElement('married');
+const gr1_t2 = getElement('unmarried');
+const gr1_t3 = getElement('other');
+const re = /\S+@\S+\.\S+/;
 const checkVal = () => {
     const del = document.querySelectorAll('.error-alert');
     if (del.length > 0) {
@@ -7,20 +44,6 @@ const checkVal = () => {
             element.remove();
         });
     }
-
-    const getElement = (name) => document.getElementById(name);
-
-    const age = getElement('patientage');
-    const list_error = document.getElementsByClassName('error-alert');
-    const email = getElement('emailid');
-    const patientgender = getElement('patientgender');
-    const otherstatus = getElement('otherstatus');
-    const phoneno = getElement('phoneno');
-    const group1 = getElement('group1');
-    const gr1_t1 = getElement('married');
-    const gr1_t2 = getElement('unmarried');
-    const gr1_t3 = getElement('other');
-    const re = /\S+@\S+\.\S+/;
     if (gr1_t3.checked) {
         if (otherstatus.value.length == 0) {
             const ott = otherstatus.parentElement;
@@ -100,8 +123,6 @@ const checkVal = () => {
                 behavior: 'smooth',
             })
             age.focus();
-
-
         } else {
             const t = age.parentElement;
             // t.querySelector('.error-alert').remove();
@@ -109,42 +130,34 @@ const checkVal = () => {
         return false;
     } else {
         handleCreateForm();
+        // console.log(getQuery('#date-time').value);
     }
-
 }
-
 const toggleSlide = () => {
     let radio = document.getElementsByName('group1');
     for (let index = 0; index < radio.length; index++) {
         if (radio[index].checked && radio[index].value == "other") {
             document.querySelector('.item.otherstatus').classList.add('active');
-
         } else {
             document.querySelector('.item.otherstatus').classList.remove('active');
         }
-
     }
 }
 var postApi = 'https://635885f7c27556d2893f19a9.mockapi.io/thaihoang/demo';
-
-function start() {
-    getForm(renderFrom);
-
-}
-start();
-
-function getForm(callback) {
-    fetch(postApi)
+const getForm = async() => {
+    const getData = await fetch(postApi)
         .then(function(response) {
             return response.json();
         })
-        .then(callback)
-        .catch(function() {
-            alert('Có lỗi trong quá trình kết nối !')
-        })
+    console.log(getData);
+    var show = document.querySelector('#show');
+    var htmls = getData.map(function(response) {
+        return `<tr><td>${response.firstname}</td><td>${response.lastname}</td><td>${response.patientage}</td><td>${response.nickname}</td><td>${response.email}</td><td>${response.gender}</td><td>${response.phone}</td><td>${response.spoucename}</td><td>${response.whome}</td><td>${response.marital}</td><td>${response.occupation}</td><td>${response.retired}</td><td>${response.date}</td><td>${response.create_at}</td><td><button onclick = "click_delete(this.id)" id="${response.id}">Xóa</button></td></tr>`
+    })
+    show.innerHTML = htmls.join('');
 }
-
-function createInformation(data, callback) {
+getForm();
+async function createInformation(data) {
     options = {
         method: 'POST',
         headers: {
@@ -152,47 +165,15 @@ function createInformation(data, callback) {
                 // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify(data)
-
     }
-    fetch(postApi, options)
-        .then(function(response) {
-            response.json()
-        })
-        .then(callback);
-}
-
-function renderFrom(informations) {
-    var show = document.querySelector('#show');
-    var htmls = informations.map(function(information) {
-        return `<tr><td>${information.firstname}</td><td>${information.lastname}</td><td>${information.patientage}</td><td>${information.nickname}</td><td>${information.email}</td><td>${information.gender}</td><td>${information.phone}</td><td>${information.spoucename}</td><td>${information.whome}</td><td>${information.marital}</td><td>${information.occupation}</td><td>${information.retired}</td><td>${information.date}</td></tr>`
-    })
-    show.innerHTML = htmls.join('');
+    await fetch(postApi, options)
+    getForm();
 }
 
 function handleCreateForm() {
-    var first_name = document.querySelector('input[name="first-name"]').value;
-    var last_name = document.querySelector('input[name="last-name"]').value;
-    var patientage_age = document.querySelector('input[name="patient-age"]').value;
-    var nicknames = document.querySelector('input[name="nickname"]').value;
-    var emails = document.querySelector('input[name="email"]').value;
-    var patientgenders = document.querySelector('#patientgender').value;
-    var phones = document.querySelector('#phoneno').value;
-    var spoucenames = document.querySelector('#spoucename').value;
-    var whomeid = document.querySelector('#whomeid').value;
-    var occupationid = document.querySelector('#occupationid').value;
-    var date_time = document.querySelector('#date-time').value;
-    var ticked = "";
-    var gr1_t1 = document.getElementById('married');
-    var gr1_t2 = document.getElementById('unmarried');
-    var gr1_t3 = document.getElementById('other');
-    var otherstatus = document.getElementById('otherstatus')
-    var ticked2 = "";
-    var item_tick1 = document.getElementById('retiredyes');
-    var item_tick2 = document.getElementById('retiredno');
     if (gr1_t3.checked) {
         if (otherstatus.value.length !== 0) {
             ticked = otherstatus.value;
-
         }
     }
     if (gr1_t1.checked) {
@@ -207,10 +188,10 @@ function handleCreateForm() {
     if (item_tick2.checked) {
         ticked2 = item_tick2.value
     }
-    var formData = {
+    const formData = {
         firstname: first_name,
         lastname: last_name,
-        patientage: patientage_age,
+        patientage: getQuery('input[name="patient-age"]').value,
         nickname: nicknames,
         email: emails,
         gender: patientgenders,
@@ -220,9 +201,39 @@ function handleCreateForm() {
         marital: ticked,
         occupation: occupationid,
         retired: ticked2,
-        date: date_time
+        date: getQuery('#date-time').value,
+        create_at: today
     }
-    createInformation(formData, function() {
-        getForm(renderFrom);
-    })
+    createInformation(formData);
+}
+const fill = () => {
+    const getFill = async() => {
+        const getData = await fetch(postApi)
+            .then(function(response) {
+                return response.json();
+            })
+            // console.log(getData);
+            // 
+        const result = getData.filter(word => word.patientage > 22);
+        var show = document.querySelector('#show');
+        var htmls = result.map(function(response) {
+            return `<tr><td>${response.firstname}</td><td>${response.lastname}</td><td>${response.patientage}</td><td>${response.nickname}</td><td>${response.email}</td><td>${response.gender}</td><td>${response.phone}</td><td>${response.spoucename}</td><td>${response.whome}</td><td>${response.marital}</td><td>${response.occupation}</td><td>${response.retired}</td><td>${response.date}</td><td>${response.create_at}</td><td><button onclick = "click_delete(this.id)" id="${response.id}">Xóa</button></td></tr>`
+        })
+        show.innerHTML = htmls.join('');
+        //
+    }
+    getFill();
+}
+const click_delete = async(id) => {
+
+    var answer = window.confirm("Delete data?");
+    if (answer) {
+        let url = postApi + '/' + id;
+        await fetch(url, {
+            method: 'DELETE',
+        });
+        getForm();
+    }
+
+
 }
